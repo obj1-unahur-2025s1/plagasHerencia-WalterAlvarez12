@@ -1,9 +1,33 @@
-import example.pepita
+import example.*
+import plagas.*
 
-describe "group of tests for pepita" {
+describe "test de plagas" {
+  const mascota1 = new Mascota(salud=200)
+  const huerta1 = new Huerta(produccion=200)
+  const hogar1 = new Hogar(mugre=200, confort=100)
+  const pulga1 = new Pulgas(poblacion=10)
+  const cucaracha1 = new Cucarachas(poblacion=300, pesoPromedioBicho=15)
+  const garrapata1 = new Garrapatas(poblacion=10)
+  const mosquito1 = new Mosquitos(poblacion = 300)
+   const barrio1 = new Barrio()
+  method initialize() {
+   barrio1.agregarElemento(mascota1)
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
   }
 
+  test "perro atacado por pulga y su salud queda a 180" {
+    mascota1.esAtacadoPor(pulga1)
+    assert.equals(180, mascota1.salud())
+  }
+
+  test "hogar es atacado por cucaracha y la mugre queda en 180" {
+    hogar1.esAtacadoPor(cucaracha1)
+    assert.equals(350, hogar1.mugre())
+  }
+
+  test "Huerta es atacado por mosquitos y queda su produccion en 170" {
+    huerta1.esAtacadoPor(mosquito1)
+    assert.equals(160, huerta1.produccion())
+  }
+  
 }
